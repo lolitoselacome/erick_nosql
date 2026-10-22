@@ -547,8 +547,38 @@ MARCA_TIEMPO = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}")
 HORA_TEXTO = re.compile(r"^\d{2}:\d{2}(:\d{2})?$")
 
 
+def reparar_texto(texto):
+    """Arregla el texto que quedo codificado dos veces en Supabase.
+
+    En la base de origen hay textos con doble codificacion: la "o" con
+    acento quedo guardada como los bytes de "A" con tilde seguidos de otro
+    caracter, porque el archivo de la migracion se leyo como Latin-1 en
+    algun paso. Se ve como "Comunicacion" convertida en "ComunicaciA³n".
+
+    Deshacerlo es volver a bytes por Latin-1 y leerlos como UTF-8. Solo
+    se hace cuando el resultado es valido y de verdad cambia algo, asi
+    que un texto sano pasa intacto.
+    """
+    if "Ã" not in texto and "Â" not in texto:
+        return texto
+
+    # Se prueban las dos lecturas equivocadas que pudieron haberlo roto.
+    # Windows-1252 va primero porque cubre el tramo 0x80-0x9F, donde
+    # Latin-1 no tiene nada: ahi esta la "E" con acento, que se rompio
+    # como el signo por mil y que Latin-1 no sabe deshacer.
+    for codificacion in ("cp1252", "latin-1"):
+        try:
+            arreglado = texto.encode(codificacion).decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            continue
+        if arreglado != texto:
+            return arreglado
+    return texto
+
+
 def desde_json(valor):
     if isinstance(valor, str):
+        valor = reparar_texto(valor)
         if MARCA_TIEMPO.match(valor):
             texto = valor.replace("Z", "+00:00")
             try:
