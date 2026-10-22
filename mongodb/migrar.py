@@ -38,6 +38,7 @@ from pathlib import Path
 import psycopg
 from psycopg.rows import dict_row
 from pymongo import ASCENDING, DESCENDING, MongoClient
+from pymongo.errors import OperationFailure
 
 RAIZ = Path(__file__).resolve().parent.parent
 
@@ -496,6 +497,20 @@ UNICOS = {
     ("inscripciones", "id_alumno_1_id_periodo_1"),
 }
 
+# Indices unicos que solo valen para parte de la coleccion.
+#
+# La matricula solo existe en el perfil del alumno y el numero de
+# empleado solo en el del docente. Sin este filtro, MongoDB trata como
+# duplicados todos los documentos donde el campo no esta, y el indice
+# no se puede crear: 493 usuarios sin perfil de docente son 493 nulos
+# repetidos.
+PARCIALES = {
+    ("usuarios", "perfil_alumno.matricula_1"): {"perfil_alumno.matricula": {"$exists": True}},
+    ("usuarios", "perfil_docente.numero_empleado_1"): {
+        "perfil_docente.numero_empleado": {"$exists": True}
+    },
+}
+
 TABLAS = [
     "carreras", "turnos", "periodos", "calendario_escolar", "aulas", "materias",
     "materia_carrera", "usuarios", "alumnos", "docentes", "documentos", "grupos",
@@ -837,7 +852,20 @@ def crear_indices(db):
         for llave in llaves:
             nombre = "_".join(f"{c}_{1 if d == ASCENDING else -1}" for c, d in llave)
             es_unico = (coleccion, nombre) in UNICOS
-            db[coleccion].create_index(list(llave), name=nombre, unique=es_unico)
+            opciones = {"name": nombre, "unique": es_unico}
+            filtro = PARCIALES.get((coleccion, nombre))
+            if filtro:
+                opciones["partialFilterExpression"] = filtro
+            try:
+                db[coleccion].create_index(list(llave), **opciones)
+            except OperationFailure as error:
+                # Si ya existe uno con el mismo nombre pero distinta
+                # definicion, se rehace. Pasa al cambiar un indice de
+                # normal a parcial.
+                if error.code != 86:
+                    raise
+                db[coleccion].drop_index(nombre)
+                db[coleccion].create_index(list(llave), **opciones)
             total += 1
     print(f"  {total} indices")
 
