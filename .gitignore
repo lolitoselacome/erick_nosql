@@ -1,0 +1,24 @@
+# Secretos: la cadena de conexion de Atlas lleva usuario y contrasena
+.env
+*.env
+!.env.example
+
+# Dependencias
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Compilados del frontend
+dist/
+build/
+.vite/
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+*.log
+
+# OneDrive
+desktop.ini

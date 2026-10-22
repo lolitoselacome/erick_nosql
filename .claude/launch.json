@@ -1,0 +1,8 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "portal", "url": "http://localhost:5173", "port": 5173 },
+    { "name": "admin", "url": "http://localhost:5174", "port": 5174 },
+    { "name": "api", "url": "http://localhost:8000", "port": 8000 }
+  ]
+}

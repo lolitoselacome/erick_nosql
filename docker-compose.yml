@@ -1,0 +1,95 @@
+services:
+  # -------------------------------------------------------------------
+  # MongoDB local: la copia fuera de produccion donde se prueban las
+  # migraciones antes de tocar Atlas, igual que la rama de la base del
+  # proyecto relacional.
+  #
+  # Va como conjunto de replicas de un solo miembro porque las
+  # transacciones de MongoDB no funcionan en un servidor solo, y buena
+  # parte de las reglas de este modelo dependen de ellas. El conjunto se
+  # inicia solo en el primer healthcheck.
+  # -------------------------------------------------------------------
+  mongo:
+    image: mongo:8
+    container_name: cetia_mongo
+    command: ["mongod", "--replSet", "cetia", "--bind_ip_all"]
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_datos:/data/db
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >
+          mongosh --quiet --eval "
+            try { rs.status().ok }
+            catch (e) { rs.initiate({_id: 'cetia', members: [{_id: 0, host: 'mongo:27017'}]}).ok }
+          "
+      interval: 5s
+      timeout: 10s
+      retries: 20
+      start_period: 10s
+
+  # -------------------------------------------------------------------
+  # Aplica las migraciones en el MongoDB local.
+  #
+  #   docker compose --profile migraciones run --rm migraciones
+  # -------------------------------------------------------------------
+  migraciones:
+    image: node:22-alpine
+    container_name: cetia_migraciones
+    working_dir: /app
+    volumes:
+      - ./mongodb:/app
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/?replicaSet=cetia
+      MONGODB_BASE: ${MONGODB_BASE:-cetia}
+    depends_on:
+      mongo:
+        condition: service_healthy
+    command: sh -c "npm install --no-audit --no-fund --loglevel=error && node aplicar.js"
+    profiles: ["migraciones"]
+
+  # -------------------------------------------------------------------
+  # Aplica las mismas migraciones en MongoDB Atlas, leyendo MONGODB_URI
+  # de .env. Va en su propio perfil y sin depender del Mongo local, para
+  # que apuntar a Atlas sea una decision explicita y no un descuido.
+  #
+  #   docker compose --profile atlas run --rm atlas
+  # -------------------------------------------------------------------
+  atlas:
+    image: node:22-alpine
+    container_name: cetia_atlas
+    working_dir: /app
+    volumes:
+      - ./mongodb:/app
+    environment:
+      # Si falta, aplicar.js lo dice y no hace nada.
+      MONGODB_URI: ${MONGODB_URI:-}
+      MONGODB_BASE: ${MONGODB_BASE:-cetia}
+    command: sh -c "npm install --no-audit --no-fund --loglevel=error && node aplicar.js"
+    profiles: ["atlas"]
+
+  # -------------------------------------------------------------------
+  # Pruebas del modelo: comprueban que los validadores y los indices
+  # unicos de verdad rechazan lo que deben rechazar. Corren en una base
+  # aparte que se borra al terminar, en el Mongo local, nunca en Atlas.
+  #
+  #   docker compose --profile pruebas run --rm pruebas
+  # -------------------------------------------------------------------
+  pruebas:
+    image: node:22-alpine
+    container_name: cetia_pruebas
+    working_dir: /app
+    volumes:
+      - ./mongodb:/app
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/?replicaSet=cetia
+    depends_on:
+      mongo:
+        condition: service_healthy
+    command: sh -c "npm install --no-audit --no-fund --loglevel=error && node pruebas/validadores.js"
+    profiles: ["pruebas"]
+
+volumes:
+  mongo_datos:

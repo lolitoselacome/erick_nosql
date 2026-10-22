@@ -1,0 +1,14 @@
+{
+  "name": "cetia-mongodb",
+  "version": "1.0.0",
+  "description": "Modelo de documentos de CETIA: colecciones, validadores, indices y datos base",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "aplicar": "node aplicar.js",
+    "estado": "node aplicar.js --estado"
+  },
+  "dependencies": {
+    "mongodb": "^6.12.0"
+  }
+}
