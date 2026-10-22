@@ -1,0 +1,17 @@
+{
+  "name": "cetia-datos",
+  "version": "1.0.0",
+  "description": "Capa de datos de CETIA: la unica puerta a MongoDB. Hereda lo que en PostgreSQL hacian los disparadores, la seguridad por filas y los permisos por columna.",
+  "private": true,
+  "type": "module",
+  "main": "src/indice.js",
+  "scripts": {
+    "servidor": "node src/servidor.js",
+    "pruebas": "node --test pruebas/"
+  },
+  "dependencies": {
+    "mongodb": "^6.12.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
