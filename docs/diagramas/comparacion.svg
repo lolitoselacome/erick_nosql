@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 900" width="1000" height="900" role="img" aria-label="De veinte tablas a doce colecciones">
+  <rect width="1000" height="900" fill="#ffffff" />
+  <text x="40" y="46" font-family="Orbitron, Arial, sans-serif" font-size="19" font-weight="700" fill="#0b2a5b">De veinte tablas a doce colecciones</text>
+  <text x="40" y="72" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#475569">Qué pasó con cada tabla del modelo relacional al rediseñarlo a documentos.</text>
+  <text x="40" y="96" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#2f9e5b" font-weight="700">Línea verde: la tabla desapareció y quedó como arreglo dentro de otro documento.</text>
+  <text x="40" y="116" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#123b7a" font-weight="700">Línea azul: la tabla se quedó como colección propia.</text>
+  <text x="40" y="134" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#475569">PostgreSQL · 20 tablas</text>
+  <text x="660" y="134" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#475569">MongoDB · 12 colecciones</text>
+  <path d="M290 163 C475.0 163, 475.0 187, 660 187" fill="none" stroke="#123b7a" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 197 C475.0 197, 475.0 243, 660 243" fill="none" stroke="#123b7a" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 231 C475.0 231, 475.0 299, 660 299" fill="none" stroke="#123b7a" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 265 C475.0 265, 475.0 299, 660 299" fill="none" stroke="#2f9e5b" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 299 C475.0 299, 475.0 355, 660 355" fill="none" stroke="#123b7a" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 333 C475.0 333, 475.0 411, 660 411" fill="none" stroke="#123b7a" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 367 C475.0 367, 475.0 467, 660 467" fill="none" stroke="#2f9e5b" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 401 C475.0 401, 475.0 523, 660 523" fill="none" stroke="#123b7a" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 435 C475.0 435, 475.0 523, 660 523" fill="none" stroke="#2f9e5b" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 469 C475.0 469, 475.0 523, 660 523" fill="none" stroke="#2f9e5b" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 503 C475.0 503, 475.0 523, 660 523" fill="none" stroke="#2f9e5b" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 537 C475.0 537, 475.0 579, 660 579" fill="none" stroke="#123b7a" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 571 C475.0 571, 475.0 579, 660 579" fill="none" stroke="#2f9e5b" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 605 C475.0 605, 475.0 579, 660 579" fill="none" stroke="#2f9e5b" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 639 C475.0 639, 475.0 635, 660 635" fill="none" stroke="#123b7a" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 673 C475.0 673, 475.0 635, 660 635" fill="none" stroke="#2f9e5b" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 707 C475.0 707, 475.0 635, 660 635" fill="none" stroke="#2f9e5b" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 741 C475.0 741, 475.0 691, 660 691" fill="none" stroke="#123b7a" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 775 C475.0 775, 475.0 747, 660 747" fill="none" stroke="#123b7a" stroke-width="1.4" opacity="0.55" />
+  <path d="M290 809 C475.0 809, 475.0 803, 660 803" fill="none" stroke="#123b7a" stroke-width="1.4" opacity="0.55" />
+  <rect x="40" y="150" width="250" height="26" rx="6" fill="#e8eef7" stroke="#123b7a" stroke-width="1.2" />
+  <text x="50" y="168" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">carreras</text>
+  <rect x="40" y="184" width="250" height="26" rx="6" fill="#e8eef7" stroke="#123b7a" stroke-width="1.2" />
+  <text x="50" y="202" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">turnos</text>
+  <rect x="40" y="218" width="250" height="26" rx="6" fill="#e8eef7" stroke="#123b7a" stroke-width="1.2" />
+  <text x="50" y="236" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">periodos</text>
+  <rect x="40" y="252" width="250" height="26" rx="6" fill="#e7f5ed" stroke="#2f9e5b" stroke-width="1.2" />
+  <text x="50" y="270" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">calendario_escolar</text>
+  <rect x="40" y="286" width="250" height="26" rx="6" fill="#e8eef7" stroke="#123b7a" stroke-width="1.2" />
+  <text x="50" y="304" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">aulas</text>
+  <rect x="40" y="320" width="250" height="26" rx="6" fill="#e8eef7" stroke="#123b7a" stroke-width="1.2" />
+  <text x="50" y="338" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">materias</text>
+  <rect x="40" y="354" width="250" height="26" rx="6" fill="#e7f5ed" stroke="#2f9e5b" stroke-width="1.2" />
+  <text x="50" y="372" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">materia_carrera</text>
+  <rect x="40" y="388" width="250" height="26" rx="6" fill="#e8eef7" stroke="#123b7a" stroke-width="1.2" />
+  <text x="50" y="406" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">usuarios</text>
+  <rect x="40" y="422" width="250" height="26" rx="6" fill="#e7f5ed" stroke="#2f9e5b" stroke-width="1.2" />
+  <text x="50" y="440" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">alumnos</text>
+  <rect x="40" y="456" width="250" height="26" rx="6" fill="#e7f5ed" stroke="#2f9e5b" stroke-width="1.2" />
+  <text x="50" y="474" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">docentes</text>
+  <rect x="40" y="490" width="250" height="26" rx="6" fill="#e7f5ed" stroke="#2f9e5b" stroke-width="1.2" />
+  <text x="50" y="508" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">documentos</text>
+  <rect x="40" y="524" width="250" height="26" rx="6" fill="#e8eef7" stroke="#123b7a" stroke-width="1.2" />
+  <text x="50" y="542" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">grupos</text>
+  <rect x="40" y="558" width="250" height="26" rx="6" fill="#e7f5ed" stroke="#2f9e5b" stroke-width="1.2" />
+  <text x="50" y="576" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">asignaciones</text>
+  <rect x="40" y="592" width="250" height="26" rx="6" fill="#e7f5ed" stroke="#2f9e5b" stroke-width="1.2" />
+  <text x="50" y="610" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">horarios</text>
+  <rect x="40" y="626" width="250" height="26" rx="6" fill="#e8eef7" stroke="#123b7a" stroke-width="1.2" />
+  <text x="50" y="644" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">inscripciones</text>
+  <rect x="40" y="660" width="250" height="26" rx="6" fill="#e7f5ed" stroke="#2f9e5b" stroke-width="1.2" />
+  <text x="50" y="678" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">carga_academica</text>
+  <rect x="40" y="694" width="250" height="26" rx="6" fill="#e7f5ed" stroke="#2f9e5b" stroke-width="1.2" />
+  <text x="50" y="712" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">calificaciones</text>
+  <rect x="40" y="728" width="250" height="26" rx="6" fill="#e8eef7" stroke="#123b7a" stroke-width="1.2" />
+  <text x="50" y="746" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">tramites</text>
+  <rect x="40" y="762" width="250" height="26" rx="6" fill="#e8eef7" stroke="#123b7a" stroke-width="1.2" />
+  <text x="50" y="780" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">avisos</text>
+  <rect x="40" y="796" width="250" height="26" rx="6" fill="#e8eef7" stroke="#123b7a" stroke-width="1.2" />
+  <text x="50" y="814" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#0f172a">bitacora</text>
+  <rect x="660" y="170" width="250" height="34" rx="8" fill="#ffffff" stroke="#123b7a" stroke-width="1.6" />
+  <text x="672" y="185" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">carreras</text>
+  <text x="672" y="198" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#475569">sin nada embebido</text>
+  <rect x="660" y="226" width="250" height="34" rx="8" fill="#ffffff" stroke="#123b7a" stroke-width="1.6" />
+  <text x="672" y="241" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">turnos</text>
+  <text x="672" y="254" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#475569">sin nada embebido</text>
+  <rect x="660" y="282" width="250" height="34" rx="8" fill="#ffffff" stroke="#123b7a" stroke-width="1.6" />
+  <text x="672" y="297" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">periodos</text>
+  <text x="672" y="310" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#475569">lleva dentro: calendario_escolar</text>
+  <rect x="660" y="338" width="250" height="34" rx="8" fill="#ffffff" stroke="#123b7a" stroke-width="1.6" />
+  <text x="672" y="353" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">aulas</text>
+  <text x="672" y="366" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#475569">sin nada embebido</text>
+  <rect x="660" y="394" width="250" height="34" rx="8" fill="#ffffff" stroke="#123b7a" stroke-width="1.6" />
+  <text x="672" y="409" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">materias</text>
+  <text x="672" y="422" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#475569">sin nada embebido</text>
+  <rect x="660" y="450" width="250" height="34" rx="8" fill="#ffffff" stroke="#123b7a" stroke-width="1.6" />
+  <text x="672" y="465" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">planes_estudio</text>
+  <text x="672" y="478" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#475569">lleva dentro: materia_carrera</text>
+  <rect x="660" y="506" width="250" height="34" rx="8" fill="#ffffff" stroke="#123b7a" stroke-width="1.6" />
+  <text x="672" y="521" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">usuarios</text>
+  <text x="672" y="534" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#475569">lleva dentro: alumnos, docentes, documentos</text>
+  <rect x="660" y="562" width="250" height="34" rx="8" fill="#ffffff" stroke="#123b7a" stroke-width="1.6" />
+  <text x="672" y="577" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">grupos</text>
+  <text x="672" y="590" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#475569">lleva dentro: asignaciones, horarios</text>
+  <rect x="660" y="618" width="250" height="34" rx="8" fill="#ffffff" stroke="#123b7a" stroke-width="1.6" />
+  <text x="672" y="633" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">inscripciones</text>
+  <text x="672" y="646" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#475569">lleva dentro: carga_academica, calificaciones</text>
+  <rect x="660" y="674" width="250" height="34" rx="8" fill="#ffffff" stroke="#2f9e5b" stroke-width="1.6" />
+  <text x="672" y="689" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#2f9e5b">tramites</text>
+  <text x="672" y="702" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#475569">sin nada embebido</text>
+  <rect x="660" y="730" width="250" height="34" rx="8" fill="#ffffff" stroke="#2f9e5b" stroke-width="1.6" />
+  <text x="672" y="745" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#2f9e5b">avisos</text>
+  <text x="672" y="758" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#475569">sin nada embebido</text>
+  <rect x="660" y="786" width="250" height="34" rx="8" fill="#ffffff" stroke="#2f9e5b" stroke-width="1.6" />
+  <text x="672" y="801" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#2f9e5b">bitacora</text>
+  <text x="672" y="814" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#475569">sin nada embebido</text>
+  <text x="40" y="870" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#475569">Las ocho tablas con línea verde no se perdieron: viven como arreglos dentro del documento al que pertenecen.</text>
+</svg>

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1168" width="1000" height="1168" role="img" aria-label="Colecciones de la oferta del cuatrimestre y de la trayectoria">
+  <rect width="1000" height="1168" fill="#ffffff" />
+  <text x="40" y="46" font-family="Orbitron, Arial, sans-serif" font-size="19" font-weight="700" fill="#0b2a5b">Colecciones de la oferta del cuatrimestre y de la trayectoria</text>
+  <text x="40" y="72" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#475569">El grupo con sus materias y horarios, y el cuatrimestre del alumno con sus calificaciones.</text>
+  <text x="40" y="96" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#475569"># identificador &#160;&#160; &gt; referencia a otra colección &#160;&#160; [ arreglo embebido</text>
+  <text x="40" y="116" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#475569">Entre paréntesis, la tabla del modelo relacional de la que viene cada arreglo.</text>
+  <rect x="40" y="132" width="440" height="466" rx="10" fill="#ffffff" stroke="#cfd8e6" stroke-width="1.5" />
+  <path d="M40 166 h440 v-24 a10 10 0 0 0 -10 -10 h-420 a10 10 0 0 0 -10 10 z" fill="#123b7a" />
+  <text x="54" y="155" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#ffffff">grupos</text>
+  <text x="54" y="183" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#0b2a5b"># _id</text>
+  <text x="54" y="203" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">clave</text>
+  <text x="54" y="223" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">> id_carrera</text>
+  <text x="54" y="243" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">> id_turno</text>
+  <text x="54" y="263" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">> id_periodo</text>
+  <text x="54" y="283" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">carrera</text>
+  <text x="54" y="303" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">turno</text>
+  <text x="54" y="323" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">cuatrimestre</text>
+  <text x="54" y="343" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">cupo</text>
+  <text x="54" y="363" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">activo</text>
+  <text x="54" y="383" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#2f9e5b">[ asignaciones           (asignaciones)</text>
+  <text x="68" y="403" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">- id_materia</text>
+  <text x="68" y="423" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">- materia</text>
+  <text x="68" y="443" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">- id_docente</text>
+  <text x="68" y="463" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">- estatus_captura</text>
+  <text x="68" y="483" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">- captura_manual</text>
+  <text x="64" y="503" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#2f9e5b">[   horarios             (horarios)</text>
+  <text x="78" y="523" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">-   id_aula</text>
+  <text x="78" y="543" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">-   dia_semana</text>
+  <text x="78" y="563" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">-   hora_inicio</text>
+  <text x="78" y="583" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">-   hora_fin</text>
+  <rect x="40" y="624" width="440" height="226" rx="10" fill="#e7f5ed" stroke="#cfd8e6" stroke-width="1.5" />
+  <path d="M40 658 h440 v-24 a10 10 0 0 0 -10 -10 h-420 a10 10 0 0 0 -10 10 z" fill="#2f9e5b" />
+  <text x="54" y="647" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#ffffff">tramites</text>
+  <text x="54" y="675" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#0b2a5b"># _id</text>
+  <text x="54" y="695" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">> id_alumno</text>
+  <text x="54" y="715" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">tipo</text>
+  <text x="54" y="735" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">motivo</text>
+  <text x="54" y="755" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">estatus</text>
+  <text x="54" y="775" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">observaciones</text>
+  <text x="54" y="795" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">fecha_solicitud</text>
+  <text x="54" y="815" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">fecha_resolucion</text>
+  <text x="54" y="835" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">atendido_por</text>
+  <rect x="40" y="876" width="440" height="206" rx="10" fill="#e7f5ed" stroke="#cfd8e6" stroke-width="1.5" />
+  <path d="M40 910 h440 v-24 a10 10 0 0 0 -10 -10 h-420 a10 10 0 0 0 -10 10 z" fill="#2f9e5b" />
+  <text x="54" y="899" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#ffffff">bitacora</text>
+  <text x="54" y="927" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#0b2a5b"># _id</text>
+  <text x="54" y="947" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">id_usuario</text>
+  <text x="54" y="967" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">accion</text>
+  <text x="54" y="987" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">tabla_afectada</text>
+  <text x="54" y="1007" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">id_registro</text>
+  <text x="54" y="1027" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">datos_anteriores</text>
+  <text x="54" y="1047" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">datos_nuevos</text>
+  <text x="54" y="1067" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">fecha_hora</text>
+  <rect x="520" y="132" width="440" height="466" rx="10" fill="#ffffff" stroke="#cfd8e6" stroke-width="1.5" />
+  <path d="M520 166 h440 v-24 a10 10 0 0 0 -10 -10 h-420 a10 10 0 0 0 -10 10 z" fill="#123b7a" />
+  <text x="534" y="155" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#ffffff">inscripciones</text>
+  <text x="534" y="183" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#0b2a5b"># _id</text>
+  <text x="534" y="203" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">> id_alumno</text>
+  <text x="534" y="223" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">> id_periodo</text>
+  <text x="534" y="243" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">> id_grupo</text>
+  <text x="534" y="263" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">cuatrimestre</text>
+  <text x="534" y="283" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">tipo</text>
+  <text x="534" y="303" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">estatus</text>
+  <text x="534" y="323" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">fecha_solicitud</text>
+  <text x="534" y="343" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">fecha_inscripcion</text>
+  <text x="534" y="363" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">atendida_por</text>
+  <text x="534" y="383" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">observaciones</text>
+  <text x="534" y="403" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#2f9e5b">[ carga                  (carga_academica)</text>
+  <text x="548" y="423" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">- id_asignacion</text>
+  <text x="548" y="443" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">- materia</text>
+  <text x="548" y="463" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">- tipo_curso</text>
+  <text x="548" y="483" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">- estatus</text>
+  <text x="544" y="503" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#2f9e5b">[   calificaciones       (calificaciones)</text>
+  <text x="558" y="523" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">-   tipo</text>
+  <text x="558" y="543" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">-   calificacion</text>
+  <text x="558" y="563" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">-   fecha_captura</text>
+  <text x="558" y="583" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#64748b">-   capturada_por</text>
+  <rect x="520" y="624" width="440" height="226" rx="10" fill="#e7f5ed" stroke="#cfd8e6" stroke-width="1.5" />
+  <path d="M520 658 h440 v-24 a10 10 0 0 0 -10 -10 h-420 a10 10 0 0 0 -10 10 z" fill="#2f9e5b" />
+  <text x="534" y="647" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#ffffff">avisos</text>
+  <text x="534" y="675" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#0b2a5b"># _id</text>
+  <text x="534" y="695" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">titulo</text>
+  <text x="534" y="715" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">contenido</text>
+  <text x="534" y="735" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">rol_destino</text>
+  <text x="534" y="755" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#123b7a">> id_grupo</text>
+  <text x="534" y="775" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">publicado_por</text>
+  <text x="534" y="795" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">fecha_publicacion</text>
+  <text x="534" y="815" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">fecha_expiracion</text>
+  <text x="534" y="835" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">activo</text>
+  <rect x="520" y="876" width="440" height="86" rx="10" fill="#e7f5ed" stroke="#cfd8e6" stroke-width="1.5" />
+  <path d="M520 910 h440 v-24 a10 10 0 0 0 -10 -10 h-420 a10 10 0 0 0 -10 10 z" fill="#2f9e5b" />
+  <text x="534" y="899" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#ffffff">contadores</text>
+  <text x="534" y="927" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#0b2a5b"># _id</text>
+  <text x="534" y="947" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#0f172a">valor</text>
+</svg>
