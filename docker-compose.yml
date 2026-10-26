@@ -1,95 +1,103 @@
+# =====================================================================
+# CETIA NoSQL - Entorno local
+#
+# Cuatro servicios, en el orden en que se hablan:
+#
+#   portal (5173)  y  admin (5174)   el navegador
+#          |                  |
+#          +--------+---------+
+#                   v
+#              api (8000)      Django: sesion, rol y frontera
+#                   v
+#              datos (4000)    Node: la unica puerta a MongoDB
+#                   v
+#              MongoDB Atlas   en la nube
+#
+# La base no esta aqui: vive en Atlas. Lo que se levanta en local son
+# las tres capas de la aplicacion.
+#
+#   docker compose up -d --build
+# =====================================================================
+
 services:
   # -------------------------------------------------------------------
-  # MongoDB local: la copia fuera de produccion donde se prueban las
-  # migraciones antes de tocar Atlas, igual que la rama de la base del
-  # proyecto relacional.
-  #
-  # Va como conjunto de replicas de un solo miembro porque las
-  # transacciones de MongoDB no funcionan en un servidor solo, y buena
-  # parte de las reglas de este modelo dependen de ellas. El conjunto se
-  # inicia solo en el primer healthcheck.
+  # La capa de datos. Es la unica que tiene la cadena de conexion de
+  # MongoDB: ni la API ni el frontend la conocen.
   # -------------------------------------------------------------------
-  mongo:
-    image: mongo:8
-    container_name: cetia_mongo
-    command: ["mongod", "--replSet", "cetia", "--bind_ip_all"]
+  datos:
+    build:
+      context: ./datos
+    container_name: cetia_datos
+    environment:
+      MONGODB_URI: ${MONGODB_URI}
+      MONGODB_BASE: ${MONGODB_BASE:-cetia}
+      PUERTO_CAPA_DATOS: 4000
+      SECRETO_CAPA_DATOS: ${SECRETO_CAPA_DATOS:-}
     ports:
-      - "27017:27017"
-    volumes:
-      - mongo_datos:/data/db
+      - "4000:4000"
     healthcheck:
-      test:
-        - CMD-SHELL
-        - >
-          mongosh --quiet --eval "
-            try { rs.status().ok }
-            catch (e) { rs.initiate({_id: 'cetia', members: [{_id: 0, host: 'mongo:27017'}]}).ok }
-          "
-      interval: 5s
-      timeout: 10s
-      retries: 20
-      start_period: 10s
+      test: ["CMD", "node", "-e", "fetch('http://localhost:4000/salud').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 15s
+    restart: unless-stopped
 
   # -------------------------------------------------------------------
-  # Aplica las migraciones en el MongoDB local.
-  #
-  #   docker compose --profile migraciones run --rm migraciones
+  # La API. No habla con MongoDB: todo se lo pide a datos.
   # -------------------------------------------------------------------
-  migraciones:
-    image: node:22-alpine
-    container_name: cetia_migraciones
-    working_dir: /app
-    volumes:
-      - ./mongodb:/app
+  api:
+    build:
+      context: ./backend
+    container_name: cetia_api
     environment:
-      MONGODB_URI: mongodb://mongo:27017/?replicaSet=cetia
-      MONGODB_BASE: ${MONGODB_BASE:-cetia}
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-}
+      DJANGO_DEBUG: ${DJANGO_DEBUG:-1}
+      DJANGO_HOSTS: localhost,127.0.0.1,api
+      URL_CAPA_DATOS: http://datos:4000
+      SECRETO_CAPA_DATOS: ${SECRETO_CAPA_DATOS:-}
+      ORIGENES_PERMITIDOS: http://localhost:5173,http://localhost:5174
+      MINUTOS_DE_SESION: ${MINUTOS_DE_SESION:-10}
+    ports:
+      - "8000:8000"
     depends_on:
-      mongo:
+      datos:
         condition: service_healthy
-    command: sh -c "npm install --no-audit --no-fund --loglevel=error && node aplicar.js"
-    profiles: ["migraciones"]
+    restart: unless-stopped
 
   # -------------------------------------------------------------------
-  # Aplica las mismas migraciones en MongoDB Atlas, leyendo MONGODB_URI
-  # de .env. Va en su propio perfil y sin depender del Mongo local, para
-  # que apuntar a Atlas sea una decision explicita y no un descuido.
-  #
-  #   docker compose --profile atlas run --rm atlas
+  # El portal publico: alumnos y docentes.
   # -------------------------------------------------------------------
-  atlas:
-    image: node:22-alpine
-    container_name: cetia_atlas
-    working_dir: /app
-    volumes:
-      - ./mongodb:/app
+  portal:
+    build:
+      context: ./frontend
+      args:
+        APLICACION: portal
+    container_name: cetia_portal
     environment:
-      # Si falta, aplicar.js lo dice y no hace nada.
-      MONGODB_URI: ${MONGODB_URI:-}
-      MONGODB_BASE: ${MONGODB_BASE:-cetia}
-    command: sh -c "npm install --no-audit --no-fund --loglevel=error && node aplicar.js"
-    profiles: ["atlas"]
-
-  # -------------------------------------------------------------------
-  # Pruebas del modelo: comprueban que los validadores y los indices
-  # unicos de verdad rechazan lo que deben rechazar. Corren en una base
-  # aparte que se borra al terminar, en el Mongo local, nunca en Atlas.
-  #
-  #   docker compose --profile pruebas run --rm pruebas
-  # -------------------------------------------------------------------
-  pruebas:
-    image: node:22-alpine
-    container_name: cetia_pruebas
-    working_dir: /app
-    volumes:
-      - ./mongodb:/app
-    environment:
-      MONGODB_URI: mongodb://mongo:27017/?replicaSet=cetia
+      VITE_URL_API: http://localhost:8000
+      VITE_APLICACION: portal
+    ports:
+      - "5173:5173"
     depends_on:
-      mongo:
-        condition: service_healthy
-    command: sh -c "npm install --no-audit --no-fund --loglevel=error && node pruebas/validadores.js"
-    profiles: ["pruebas"]
+      - api
+    restart: unless-stopped
 
-volumes:
-  mongo_datos:
+  # -------------------------------------------------------------------
+  # El panel administrativo: administracion y coordinacion. Es otra
+  # aplicacion, en otra direccion, y nunca se enlaza desde el portal.
+  # -------------------------------------------------------------------
+  admin:
+    build:
+      context: ./frontend
+      args:
+        APLICACION: admin
+    container_name: cetia_admin
+    environment:
+      VITE_URL_API: http://localhost:8000
+      VITE_APLICACION: admin
+    ports:
+      - "5174:5173"
+    depends_on:
+      - api
+    restart: unless-stopped
