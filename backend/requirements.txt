@@ -1,0 +1,27 @@
+# =====================================================================
+# CETIA - Dependencias del backend
+#
+# El backend es la API en Django. No habla con MongoDB: todo lo que
+# necesita se lo pide a la capa de datos en Node, pasando quien es la
+# persona. Por eso aqui no hay driver de MongoDB.
+#
+# Se instalan en el entorno virtual del proyecto:
+#   .venv\Scripts\python -m pip install -r backend/requirements.txt
+# =====================================================================
+
+# La API
+Django==5.1.4
+djangorestframework==3.15.2
+
+# El portal y el panel corren en otra direccion que la API, asi que el
+# navegador necesita permiso para llamarla.
+django-cors-headers==4.6.0
+
+# Las sesiones viajan como token firmado.
+PyJWT==2.10.1
+
+# Para llamar a la capa de datos en Node.
+requests==2.32.3
+
+# Lee el .env del proyecto.
+python-dotenv==1.0.1
